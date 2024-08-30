@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "178389276694",
+    "project_id": "aldiaapp-92268",
+    "storage_bucket": "aldiaapp-92268.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178389276694:android:21729103dd7bb1f2e6fd37",
+        "android_client_info": {
+          "package_name": "com.elianisdev.aldiaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl0xIJ-mnNCBHTtWPa-aIcEyvVbYDxeVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
