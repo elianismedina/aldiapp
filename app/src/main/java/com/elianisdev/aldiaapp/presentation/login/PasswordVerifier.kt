@@ -1,4 +1,4 @@
-package com.elianisdev.aldiaapp.presentation.initial
+package com.elianisdev.aldiaapp.presentation.login
 
 import java.util.Locale
 

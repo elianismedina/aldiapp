@@ -36,7 +36,7 @@ import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
 import com.elianisdev.aldiaapp.R.drawable as myDrawables
 
 @Composable
-fun InitialScreen(
+fun LoginScreen(
     modifier: Modifier = Modifier
 ) {
     LoginPageBody {
