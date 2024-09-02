@@ -24,8 +24,7 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    Greeting(
-                        name = "Android",
+                    NavigationWrapper(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -34,18 +33,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AlDiaAppTheme {
-        Greeting("Android")
-    }
-}
