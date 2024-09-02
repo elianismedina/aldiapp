@@ -1,5 +1,6 @@
 package com.elianisdev.aldiaapp.presentation.signup
 
+import android.util.Log
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,7 +41,9 @@ fun SignupScreen(
 
 ) {
     SignupPageBody {
-        SignupPageContent()
+        SignupPageContent(
+            auth = auth
+        )
     }
 }
 
@@ -61,7 +64,9 @@ private fun SignupPageBody(
 }
 
 @Composable
-private fun SignupPageContent() {
+private fun SignupPageContent(
+    auth: FirebaseAuth
+) {
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -161,9 +166,26 @@ private fun SignupPageContent() {
             }
         )
 
-        //Button for login
+        //Button for signup
         Button(
-            onClick = { },
+            onClick = {
+                auth.createUserWithEmailAndPassword(
+                    username,
+                    password
+                ).addOnCompleteListener{
+                    task ->
+                    if (task.isSuccessful){
+                        //Registrado
+                        Log.i("ElianisDev", "Registro OK")
+
+                    }else{
+                        Log.i("ElianisDev", "Registro KO")
+
+                    }
+                }
+
+
+            },
             modifier = Modifier
                 .fillMaxWidth(.6f)
                 .height(55.dp)

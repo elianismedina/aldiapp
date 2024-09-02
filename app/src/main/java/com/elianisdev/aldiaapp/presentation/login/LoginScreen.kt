@@ -1,5 +1,6 @@
 package com.elianisdev.aldiaapp.presentation.login
 
+import android.util.Log
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,6 +34,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.elianisdev.aldiaapp.R.drawable as myDrawables
 
@@ -43,7 +46,8 @@ fun LoginScreen(
     navigateToHome: () -> Unit
 ) {
     LoginPageBody {
-        LoginPageContent()
+        LoginPageContent(auth = auth)
+        
     }
 }
 
@@ -51,7 +55,8 @@ fun LoginScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun LoginPageBody(
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable (PaddingValues) -> Unit,
+    
 ) {
     Scaffold(
         modifier = Modifier
@@ -64,7 +69,9 @@ private fun LoginPageBody(
 }
 
 @Composable
-private fun LoginPageContent() {
+private fun LoginPageContent(
+    auth: FirebaseAuth
+) {
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -167,9 +174,18 @@ private fun LoginPageContent() {
         //Button for login
         Button(
             onClick = {
-                verifyPassword(username, password) { isValid ->
-                    isLoginSuccess = isValid
+            auth.signInWithEmailAndPassword(
+                username,
+                password
+
+            ).addOnCompleteListener{
+                task ->
+                if (task.isSuccessful){
+                    Log.i("ElianisDev", "LOGIN OK")
+                }else{
+                    Log.i("ElianisDev", "LOGIN KO")
                 }
+            }
             },
             modifier = Modifier
                 .fillMaxWidth(.6f)
