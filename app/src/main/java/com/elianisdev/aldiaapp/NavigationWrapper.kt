@@ -4,17 +4,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.elianisdev.aldiaapp.presentation.initial.InitialScreen
+import com.elianisdev.aldiaapp.presentation.login.LoginScreen
+import com.elianisdev.aldiaapp.presentation.signup.SignupScreen
 
 @Composable
 fun NavigationWrapper(
     modifier: Modifier = Modifier,
     navHostController: NavHostController
 ) {
-    NavHost(navController = navHostController, startDestination = "initial" ){
+    NavHost(navController = navHostController, startDestination = "initial") {
 
-        // Add the routes here
-        composable
+        composable("initial") {
+            InitialScreen()
+        }
+        composable("LogIn") {
+            LoginScreen()
+        }
+        composable("SignUp") {
+            SignupScreen()
+
+        }
 
     }
-
 }
