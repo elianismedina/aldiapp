@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "178389276694",
-    "project_id": "aldiaapp-92268",
-    "storage_bucket": "aldiaapp-92268.appspot.com"
+    "project_number": "312185082126",
+    "project_id": "finanzasaldiaapp",
+    "storage_bucket": "finanzasaldiaapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:178389276694:android:21729103dd7bb1f2e6fd37",
+        "mobilesdk_app_id": "1:312185082126:android:6ee7c2101482b3e26e075f",
         "android_client_info": {
           "package_name": "com.elianisdev.aldiaapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAl0xIJ-mnNCBHTtWPa-aIcEyvVbYDxeVA"
+          "current_key": "AIzaSyAsq1JJ0cSiHWyu1oY1J3S89b4Uaz01LBQ"
         }
       ],
       "services": {
