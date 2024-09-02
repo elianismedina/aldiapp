@@ -33,11 +33,14 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
+import com.google.firebase.auth.FirebaseAuth
 import com.elianisdev.aldiaapp.R.drawable as myDrawables
 
 @Composable
 fun LoginScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    auth: FirebaseAuth,
+    navigateToHome: () -> Unit
 ) {
     LoginPageBody {
         LoginPageContent()

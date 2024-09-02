@@ -14,13 +14,20 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 import com.elianisdev.aldiaapp.ui.theme.AlDiaAppTheme
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
 
     private lateinit var navHostController: NavHostController
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        auth = Firebase.auth
         setContent {
             navHostController = rememberNavController()
 
@@ -30,12 +37,23 @@ class MainActivity : ComponentActivity() {
 
                     NavigationWrapper(
                         modifier = Modifier.padding(innerPadding),
-                        navHostController = navHostController
+                        navHostController = navHostController,
+                        auth
 
 
                     )
                 }
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser: FirebaseUser? = auth.currentUser
+        if (currentUser != null) {
+            // User is signed in
+        } else {
+            // No user is signed in
         }
     }
 }

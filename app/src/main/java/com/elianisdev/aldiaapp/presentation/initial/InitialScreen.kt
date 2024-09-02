@@ -36,7 +36,9 @@ import com.elianisdev.aldiaapp.ui.theme.ShapeButton
 import com.elianisdev.aldiaapp.R.drawable as MyDrawables
 
 @Composable
-fun InitialScreen(navigateToLogin: () -> Unit = {}, navigateToSignup: () -> Unit = {}) {
+fun InitialScreen(
+    navigateToLogin: () -> Unit = {},
+    navigateToSignup: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -72,7 +74,9 @@ fun InitialScreen(navigateToLogin: () -> Unit = {}, navigateToSignup: () -> Unit
             )
 
         Spacer(modifier = Modifier.weight(1f))
-        Button(onClick = { navigateToSignup }, modifier = Modifier
+        Button(onClick = {
+            navigateToSignup()
+        }, modifier = Modifier
             .fillMaxWidth()
             .height(48.dp)
             .padding(horizontal = 32.dp),
