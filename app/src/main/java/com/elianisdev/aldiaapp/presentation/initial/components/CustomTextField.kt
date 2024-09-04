@@ -12,6 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import com.elianisdev.aldiaapp.ui.theme.onPrimaryLight
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,13 +49,23 @@ fun CustomTextField(
                 color = onPrimaryLight)
         },
         singleLine = true,
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Text,
+            imeAction = ImeAction.Done
+        ),
+
+
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = onPrimaryLight,
             unfocusedBorderColor = onPrimaryLight,
-            cursorColor = onPrimaryLight
+            cursorColor = onPrimaryLight,
+            focusedTextColor = onPrimaryLight,
+            unfocusedTextColor = onPrimaryLight
 
-        )
+        ),
+        visualTransformation = if (label == "Password") PasswordVisualTransformation() else VisualTransformation.None
+
+
 
     )
 }

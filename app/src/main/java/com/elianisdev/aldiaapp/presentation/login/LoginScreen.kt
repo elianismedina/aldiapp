@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
@@ -35,6 +36,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -123,6 +126,9 @@ private fun LoginPageContent(
         //one for the header
         //another for the buttons and textFields
         val centerGuideLine = createGuidelineFromTop(.5f)
+        val isEnabled by remember {
+            mutableStateOf(true)
+        }
 
         //Box for holding the image
         Box(
@@ -178,7 +184,7 @@ private fun LoginPageContent(
         //TextField for password
         CustomTextField(
             value = password,
-            label = "constraseña",
+            label = "contraseña",
             leadingIcon = Icons.Rounded.Lock,
             onValueChange = {
                 password = it
@@ -186,7 +192,9 @@ private fun LoginPageContent(
             modifier = Modifier.constrainAs(passwordTextField) {
                 top.linkTo(usernameTextField.bottom, 15.dp)
                 centerHorizontallyTo(parent, .5f)
-            }
+            },
+
+
         )
 
         //Button for login
@@ -205,6 +213,8 @@ private fun LoginPageContent(
                 }
             }
             },
+            enabled = false,
+
             colors = ButtonDefaults.buttonColors(
                 containerColor = primaryLight
             ),
