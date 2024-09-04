@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -30,9 +31,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Brush
 import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
+import com.elianisdev.aldiaapp.ui.theme.onPrimaryLight
+import com.elianisdev.aldiaapp.ui.theme.primaryLight
 import com.google.firebase.auth.FirebaseAuth
 import com.elianisdev.aldiaapp.R.drawable as myDrawables
+import com.elianisdev.aldiaapp.ui.theme.Black
+import com.elianisdev.aldiaapp.ui.theme.Gray
 
 @Composable
 fun SignupScreen(
@@ -68,7 +74,15 @@ private fun SignupPageContent(
     auth: FirebaseAuth
 ) {
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().
+        background(
+            Brush.verticalGradient(
+                colors = listOf(
+                    Black,
+                    Gray
+                )
+            )
+        )
     ) {
 
         //creating References for each composable for
@@ -133,7 +147,7 @@ private fun SignupPageContent(
                 start.linkTo(headerImage.start)
                 end.linkTo(headerImage.end)
             },
-            color = MaterialTheme.colorScheme.onSurface,
+            color = onPrimaryLight,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
@@ -186,6 +200,9 @@ private fun SignupPageContent(
 
 
             },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = primaryLight
+            ),
             modifier = Modifier
                 .fillMaxWidth(.6f)
                 .height(55.dp)
@@ -210,7 +227,7 @@ private fun SignupPageContent(
                 start.linkTo(loginBtn.start)
                 end.linkTo(loginBtn.end)
             },
-            color = MaterialTheme.colorScheme.secondary
+            color = onPrimaryLight
         )
     }
 }

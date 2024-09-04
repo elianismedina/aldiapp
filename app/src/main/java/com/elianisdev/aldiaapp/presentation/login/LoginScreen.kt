@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -33,11 +34,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Brush
 import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.elianisdev.aldiaapp.R.drawable as myDrawables
+import com.elianisdev.aldiaapp.ui.theme.Black
+import com.elianisdev.aldiaapp.ui.theme.Gray
+import com.elianisdev.aldiaapp.ui.theme.onPrimaryLight
+import com.elianisdev.aldiaapp.ui.theme.primaryLight
 
 @Composable
 fun LoginScreen(
@@ -73,7 +79,19 @@ private fun LoginPageContent(
     auth: FirebaseAuth
 ) {
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    listOf(
+                        Gray,
+                        Black
+                    ),
+                    startY = 0f,
+                    endY = 600f
+                )
+
+            )
     ) {
 
         //creating References for each composable for
@@ -138,7 +156,7 @@ private fun LoginPageContent(
                 start.linkTo(headerImage.start)
                 end.linkTo(headerImage.end)
             },
-            color = MaterialTheme.colorScheme.onSurface,
+            color = onPrimaryLight,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
@@ -146,7 +164,7 @@ private fun LoginPageContent(
         //TextField for username
         CustomTextField(
             value = username,
-            label = "username",
+            label = "usuario",
             leadingIcon = Icons.Rounded.Person,
             onValueChange = {
                 username = it
@@ -160,7 +178,7 @@ private fun LoginPageContent(
         //TextField for password
         CustomTextField(
             value = password,
-            label = "password",
+            label = "constraseña",
             leadingIcon = Icons.Rounded.Lock,
             onValueChange = {
                 password = it
@@ -187,6 +205,9 @@ private fun LoginPageContent(
                 }
             }
             },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = primaryLight
+            ),
             modifier = Modifier
                 .fillMaxWidth(.6f)
                 .height(55.dp)
@@ -195,9 +216,10 @@ private fun LoginPageContent(
                     start.linkTo(passwordTextField.start)
                     end.linkTo(passwordTextField.end)
                 }
+
         ) {
             Text(
-                text = "Log in",
+                text = "Iniciar sesión",
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 17.sp
             )
@@ -205,13 +227,13 @@ private fun LoginPageContent(
 
         //text for forgot password
         Text(
-            text = "forgot password?",
+            text = "¿Olvidaste tu contraseña?",
             modifier = Modifier.constrainAs(forgotPassword) {
                 top.linkTo(loginBtn.bottom, margin = 20.dp)
                 start.linkTo(loginBtn.start)
                 end.linkTo(loginBtn.end)
             },
-            color = MaterialTheme.colorScheme.secondary
+            color = onPrimaryLight
         )
     }
 }
