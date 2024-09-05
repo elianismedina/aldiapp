@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.elianisdev.aldiaapp.presentation.initial.components.CustomTextField
+import com.elianisdev.aldiaapp.presentation.initial.components.PasswordTextField
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -126,9 +127,7 @@ private fun LoginPageContent(
         //one for the header
         //another for the buttons and textFields
         val centerGuideLine = createGuidelineFromTop(.5f)
-        val isEnabled by remember {
-            mutableStateOf(true)
-        }
+
 
         //Box for holding the image
         Box(
@@ -182,7 +181,7 @@ private fun LoginPageContent(
         )
 
         //TextField for password
-        CustomTextField(
+        PasswordTextField(
             value = password,
             label = "contraseña",
             leadingIcon = Icons.Rounded.Lock,
@@ -193,6 +192,8 @@ private fun LoginPageContent(
                 top.linkTo(usernameTextField.bottom, 15.dp)
                 centerHorizontallyTo(parent, .5f)
             },
+
+
 
 
         )
@@ -213,7 +214,7 @@ private fun LoginPageContent(
                 }
             }
             },
-            enabled = false,
+
 
             colors = ButtonDefaults.buttonColors(
                 containerColor = primaryLight

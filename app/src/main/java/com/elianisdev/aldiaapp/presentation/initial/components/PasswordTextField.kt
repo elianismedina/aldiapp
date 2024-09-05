@@ -19,7 +19,7 @@ import com.elianisdev.aldiaapp.ui.theme.onPrimaryLight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTextField(
+fun PasswordTextField(
     modifier: Modifier = Modifier,
     value: String,
     label : String,
@@ -51,8 +51,8 @@ fun CustomTextField(
         },
         singleLine = true,
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Email,
-            imeAction = ImeAction.Next
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
         ),
 
 
@@ -67,9 +67,8 @@ fun CustomTextField(
             focusedLabelColor = onPrimaryLight,
             unfocusedLabelColor = onPrimaryLight,
 
-
-
         ),
+        visualTransformation = PasswordVisualTransformation()
 
 
 
